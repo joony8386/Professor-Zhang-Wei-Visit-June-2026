@@ -1,0 +1,347 @@
+import React, { useState } from 'react';
+import { 
+  User, 
+  FileText, 
+  Calendar, 
+  Map, 
+  MapPin, 
+  Clock, 
+  ExternalLink, 
+  Sun, 
+  CloudRain, 
+  Utensils, 
+  Camera, 
+  Award, 
+  BookOpen,
+  ChevronRight,
+  PlaneTakeoff,
+  PlaneLanding,
+  Hospital,
+  Hotel
+} from 'lucide-react';
+
+const WelcomeTab = () => (
+  <div className="space-y-6 animate-fadeIn">
+    <div className="bg-blue-50 p-8 rounded-2xl border border-blue-100 shadow-sm">
+      <h2 className="text-3xl font-bold text-gray-800 mb-4">A Warm Welcome to Our Thai Colleagues</h2>
+      <div className="w-16 h-1 bg-blue-600 mb-6 rounded-full"></div>
+      
+      <div className="space-y-4 text-lg text-gray-700 leading-relaxed font-serif">
+        <p>
+          Greetings esteemed delegates! It is my absolute honor to host your distinguished group here in Hangzhou. Spine surgery evolves at a breakneck pace. Unilateral biportal endoscopy stands at the vanguard of this medical revolution. 
+        </p>
+        <p>
+          Your journey from Thailand bridges our medical communities and we can forge a powerful alliance in orthopedic advancement together. I pioneered several UBE techniques within China and I am fiercely passionate about pushing the boundaries of minimally invasive care. 
+        </p>
+        <p>
+          Our upcoming days will be intensely collaborative. We will dive deep into live surgical demonstrations. You will witness the nuances of unilateral approach bilateral decompression and microscopic fusion firsthand. We will dissect complex cases and share invaluable clinical insights. 
+        </p>
+        <p>
+          Beyond the operating theater lies the historic splendor of Hangzhou. This city blends ancient tranquility with modern dynamism seamlessly. I hope you absorb the rich culture and savor our exquisite local cuisine during your stay. Let us illuminate the future of spine care together!
+        </p>
+        
+        <div className="pt-6 mt-6 border-t border-blue-200">
+          <p className="font-bold text-xl text-gray-900">Prof. Zhang Wei</p>
+          <p className="text-blue-700">Hangzhou Hospital of Traditional Chinese Medicine</p>
+          <p className="text-sm text-gray-500 mt-1">Founding Member, ISUBE Association</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const CVTab = () => (
+  <div className="space-y-8 animate-fadeIn">
+    <div className="flex items-center space-x-4 mb-6">
+      <div className="bg-blue-600 p-3 rounded-xl text-white">
+        <Award size={28} />
+      </div>
+      <h2 className="text-3xl font-bold text-gray-800">Curriculum Vitae Highlights</h2>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-6">
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+          <BookOpen className="w-5 h-5 mr-2 text-blue-600" /> Professional Roles
+        </h3>
+        <ul className="space-y-3 text-gray-700">
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Founding member of ISUBE (ISUBE Association)</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Senior Consultant, Endospinemax International UBE</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Vice Chairman, Basic Branch of Shandong Pain Society</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Deputy Leader, UBE Group of Low Back Pain Rehabilitation (Shandong)</li>
+        </ul>
+      </div>
+
+      <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+          <Award className="w-5 h-5 mr-2 text-blue-600" /> Technical Mastery
+        </h3>
+        <ul className="space-y-3 text-gray-700">
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Pioneer of UBE techniques in China after training under ISUBE Master Sang Kyu Son.</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> First to execute various UBE disc removals and endoscopic fibrous ring sutures domestically.</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Innovator of the global "Third Approach Concept" (Zhang's portal).</li>
+          <li className="flex items-start"><ChevronRight className="w-5 h-5 text-blue-500 mr-1 flex-shrink-0" /> Creator of "UBEbox" specialized devices for surgical training.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 mt-6">
+      <h3 className="text-xl font-bold text-gray-800 mb-4">Academic Contributions</h3>
+      <p className="text-gray-700 mb-4">
+        Prof. Zhang Wei established the UBEchina organization to broadcast domestic advancements globally. He frequently lectures at international conferences across South Korea, Germany, Egypt and India. He also bridges art and medicine as a skilled medical illustrator. He runs a WeChat public account called "Medical Hand-Drawn" with over 4,000 orthopedic followers.
+      </p>
+      <div className="flex space-x-4">
+        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">2 SCI Articles</span>
+        <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">5 Domestic Papers</span>
+      </div>
+    </div>
+  </div>
+);
+
+const ItineraryTab = () => {
+  const days = [
+    {
+      date: "Tuesday, June 2, 2026",
+      title: "Arrival in Hangzhou",
+      events: [
+        { time: "12:50 - 17:50", desc: "Flight JD420: Bangkok to Hangzhou", icon: <PlaneLanding className="w-5 h-5" /> },
+        { time: "Evening", desc: "Check in to Junsun Luxury Hotel & Dinner", icon: <Hotel className="w-5 h-5" />, link: "https://www.trip.com/w/inr1SEcgxT2", linkText: "View Hotel" }
+      ]
+    },
+    {
+      date: "Wednesday, June 3, 2026",
+      title: "Clinical Immersion Day 1",
+      events: [
+        { time: "07:00", desc: "Breakfast at hotel", icon: <Utensils className="w-5 h-5" /> },
+        { time: "08:00", desc: "Walk to Hangzhou TCM Hospital (Dingqiao Branch)", icon: <Hospital className="w-5 h-5" />, link: "https://maps.app.goo.gl/KRBfggvb2jh5KqZHA", linkText: "Hospital Map" },
+        { time: "08:00 - 12:00", desc: "Meet Prof. Zhang Wei & First Live Surgery Demonstration", icon: <Award className="w-5 h-5" /> },
+        { time: "12:00 - 13:00", desc: "Lunch at hospital", icon: <Utensils className="w-5 h-5" /> },
+        { time: "13:00 - 17:00", desc: "Second Live Surgery Demonstration", icon: <Award className="w-5 h-5" /> },
+        { time: "18:00 - 20:00", desc: "Dinner Banquet with Prof. Zhang Wei", icon: <Utensils className="w-5 h-5" /> }
+      ]
+    },
+    {
+      date: "Thursday, June 4, 2026",
+      title: "Clinical Immersion Day 2",
+      events: [
+        { time: "07:00", desc: "Breakfast at hotel", icon: <Utensils className="w-5 h-5" /> },
+        { time: "08:00", desc: "Walk to Hangzhou TCM Hospital (Dingqiao Branch)", icon: <Hospital className="w-5 h-5" /> },
+        { time: "08:00 - 12:00", desc: "Advanced UBE Techniques & Live Surgery", icon: <Award className="w-5 h-5" /> },
+        { time: "12:00 - 13:00", desc: "Lunch at hospital", icon: <Utensils className="w-5 h-5" /> },
+        { time: "13:00 - 17:00", desc: "Final Live Surgery Demonstration & Q&A", icon: <Award className="w-5 h-5" /> },
+        { time: "18:00 - 20:00", desc: "Farewell Dinner Banquet with Prof. Zhang Wei", icon: <Utensils className="w-5 h-5" /> }
+      ]
+    },
+    {
+      date: "Friday, June 5, 2026",
+      title: "Cultural Exploration",
+      events: [
+        { time: "08:00 - 17:00", desc: "Full-Day Private Tour (West Lake and Hangzhou Highlights)", icon: <Camera className="w-5 h-5" /> },
+        { time: "19:00 - 21:00", desc: "Hangzhou Palace Banquet: Immersive Imperial Feast", icon: <Utensils className="w-5 h-5" /> }
+      ]
+    },
+    {
+      date: "Saturday, June 6, 2026",
+      title: "Departure",
+      events: [
+        { time: "06:00", desc: "Hotel Checkout & Departure to Airport", icon: <Hotel className="w-5 h-5" /> },
+        { time: "07:00", desc: "Check in at Hangzhou International Airport", icon: <Clock className="w-5 h-5" /> },
+        { time: "08:35 - 11:45", desc: "Flight JD419: Hangzhou to Bangkok", icon: <PlaneTakeoff className="w-5 h-5" /> }
+      ]
+    }
+  ];
+
+  return (
+    <div className="space-y-6 animate-fadeIn">
+      <div className="flex items-center space-x-4 mb-6">
+        <div className="bg-blue-600 p-3 rounded-xl text-white">
+          <Calendar size={28} />
+        </div>
+        <h2 className="text-3xl font-bold text-gray-800">Delegation Itinerary</h2>
+      </div>
+
+      <div className="space-y-8">
+        {days.map((day, index) => (
+          <div key={index} className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+            <div className="bg-slate-800 text-white px-6 py-4 flex justify-between items-center">
+              <h3 className="text-lg font-bold">{day.date}</h3>
+              <span className="text-blue-300 font-semibold">{day.title}</span>
+            </div>
+            <div className="p-6">
+              <div className="relative border-l-2 border-blue-200 ml-4 space-y-6">
+                {day.events.map((event, eventIdx) => (
+                  <div key={eventIdx} className="relative pl-8">
+                    <div className="absolute -left-[17px] top-1 bg-white border-2 border-blue-500 rounded-full p-1 text-blue-600">
+                      {event.icon}
+                    </div>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between">
+                      <div>
+                        <span className="font-bold text-gray-800 w-32 inline-block">{event.time}</span>
+                        <span className="text-gray-700">{event.desc}</span>
+                      </div>
+                      {event.link && (
+                        <a 
+                          href={event.link} 
+                          target="_blank" 
+                          rel="noreferrer"
+                          className="mt-2 sm:mt-0 inline-flex items-center text-sm text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1 rounded-full transition-colors"
+                        >
+                          {event.linkText} <ExternalLink className="w-4 h-4 ml-1" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const GuideTab = () => (
+  <div className="space-y-8 animate-fadeIn">
+    <div className="flex items-center space-x-4 mb-6">
+      <div className="bg-blue-600 p-3 rounded-xl text-white">
+        <MapPin size={28} />
+      </div>
+      <h2 className="text-3xl font-bold text-gray-800">Hangzhou Survival Guide</h2>
+    </div>
+
+    <div className="grid md:grid-cols-2 gap-6">
+      {/* Weather Section */}
+      <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-6 rounded-xl shadow-sm border border-cyan-100">
+        <h3 className="text-xl font-bold text-cyan-900 mb-4 flex items-center">
+          <Sun className="w-6 h-6 mr-2 text-orange-500" /> Early June Weather
+        </h3>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          June marks the energetic transition into summer. The climate feels decidedly warm and humidity begins to climb. The dreaded "Plum Rain" season usually kicks off mid-month so you must prepare for sudden downpours!
+        </p>
+        <ul className="space-y-2 text-sm text-gray-700">
+          <li className="flex justify-between border-b border-cyan-200 pb-1">
+            <span className="font-semibold">Average High:</span> <span>30°C (86°F)</span>
+          </li>
+          <li className="flex justify-between border-b border-cyan-200 pb-1">
+            <span className="font-semibold">Average Low:</span> <span>23°C (73°F)</span>
+          </li>
+          <li className="flex items-center mt-3 text-cyan-800 font-semibold">
+            <CloudRain className="w-4 h-4 mr-2" /> Pack an umbrella and light breathable clothing!
+          </li>
+        </ul>
+      </div>
+
+      {/* Food Section */}
+      <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl shadow-sm border border-orange-100">
+        <h3 className="text-xl font-bold text-orange-900 mb-4 flex items-center">
+          <Utensils className="w-6 h-6 mr-2 text-orange-600" /> Local Culinary Delights
+        </h3>
+        <p className="text-gray-700 mb-4 leading-relaxed">
+          Hangzhou cuisine celebrates fresh ingredients and delicate flavors. It avoids heavy spices. You will discover subtle sweetness and refined textures.
+        </p>
+        <ul className="space-y-3 text-sm text-gray-800">
+          <li><strong>West Lake Vinegar Fish:</strong> A legendary sweet and sour masterpiece made from fresh grass carp.</li>
+          <li><strong>Dongpo Pork:</strong> Braised pork belly that literally melts in your mouth. It honors a famous ancient poet.</li>
+          <li><strong>Longjing Shrimp:</strong> Fresh river shrimp stir-fried with fragrant Dragon Well tea leaves.</li>
+          <li><strong>Beggar's Chicken:</strong> Tender chicken wrapped in lotus leaves and baked slowly in clay.</li>
+        </ul>
+      </div>
+    </div>
+
+    {/* Attractions Section */}
+    <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
+      <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
+        <Camera className="w-6 h-6 mr-2 text-blue-600" /> Must-Visit Attractions (Friday Tour)
+      </h3>
+      
+      <div className="grid md:grid-cols-2 gap-6 mt-4">
+        <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+          <h4 className="font-bold text-lg text-blue-800 mb-2">Route 1: Classic Heritage</h4>
+          <p className="text-sm text-gray-600 mb-3">Ideal for first-time visitors seeking iconic landmarks.</p>
+          <ul className="text-sm space-y-2 text-gray-700 list-disc pl-4">
+            <li><strong>West Lake:</strong> A UNESCO World Heritage masterpiece of classical Chinese garden design.</li>
+            <li><strong>Lingyin Temple:</strong> One of China's wealthiest and most magnificent ancient Buddhist temples.</li>
+            <li><strong>Feilai Peak:</strong> Limestone mountains covered in hundreds of historic Buddhist carvings.</li>
+            <li><strong>Leifeng Pagoda:</strong> A legendary five-story tower offering panoramic views of the lake.</li>
+          </ul>
+        </div>
+
+        <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+          <h4 className="font-bold text-lg text-blue-800 mb-2">Route 2: Nature & Culture</h4>
+          <p className="text-sm text-gray-600 mb-3">Perfect for experiencing Hangzhou's renowned tea culture.</p>
+          <ul className="text-sm space-y-2 text-gray-700 list-disc pl-4">
+            <li><strong>Guo Zhuang:</strong> A stunningly preserved classical private garden estate.</li>
+            <li><strong>Meijiawu Tea Village:</strong> The lush green epicenter of Longjing (Dragon Well) tea production.</li>
+            <li><strong>Yunqi Bamboo Forest:</strong> A serene walking path cutting through towering emerald bamboo.</li>
+            <li><strong>Qinghefang Street:</strong> A bustling ancient pedestrian street perfect for souvenirs and snacks.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('welcome');
+
+  const tabs = [
+    { id: 'welcome', label: 'Welcome', icon: <User size={18} /> },
+    { id: 'cv', label: 'Prof. CV', icon: <FileText size={18} /> },
+    { id: 'itinerary', label: 'Itinerary', icon: <Calendar size={18} /> },
+    { id: 'guide', label: 'Local Guide', icon: <Map size={18} /> }
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-100 font-sans text-gray-900 selection:bg-blue-200 selection:text-blue-900">
+      {/* Header */}
+      <header className="bg-slate-900 text-white py-8 shadow-lg">
+        <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-extrabold tracking-tight">Hangzhou UBE Delegation</h1>
+            <p className="text-blue-400 mt-2 font-medium">June 2 - 6, 2026 • Hangzhou, China</p>
+          </div>
+          <div className="mt-4 md:mt-0 flex items-center space-x-3 bg-slate-800 py-2 px-4 rounded-full border border-slate-700">
+            <Hospital className="text-blue-400" size={20} />
+            <span className="text-sm font-semibold">Hangzhou TCM Hospital</span>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-6 py-8">
+        {/* Navigation */}
+        <nav className="flex flex-wrap gap-2 mb-8 bg-white p-2 rounded-xl shadow-sm border border-gray-200">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex-1 flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-semibold transition-all duration-200 ${
+                activeTab === tab.id
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-gray-600 hover:bg-slate-50 hover:text-blue-600'
+              }`}
+            >
+              {tab.icon}
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Content Area */}
+        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-h-[500px] border border-gray-100">
+          {activeTab === 'welcome' && <WelcomeTab />}
+          {activeTab === 'cv' && <CVTab />}
+          {activeTab === 'itinerary' && <ItineraryTab />}
+          {activeTab === 'guide' && <GuideTab />}
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="text-center py-8 text-slate-500 text-sm">
+        <p>© 2026 Medical Exchange Program. Designed for the Thai Orthopedic Delegation.</p>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
